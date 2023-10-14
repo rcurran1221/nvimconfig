@@ -345,7 +345,8 @@ M.nvterm = {
     -- new
     ["<leader>h"] = {
       function()
-        require("nvterm.terminal").new "horizontal"
+        require("nvterm.terminal").send("cd " .. vim.fn.expand('%'), "horizontal")
+        require("nvterm.terminal").toggle "horizontal"
       end,
       "New horizontal term",
     },
