@@ -6,4 +6,7 @@
 --   command = "tabdo wincmd =",
 -- })
 vim.wo.relativenumber = true
--- vim.opt.shell = 'powershell.exe'
+vim.o.shell="powershell"
+vim.o.shellcmdflag="-command"
+vim.o.shellquote="\\"
+vim.o.shellxquote=""
