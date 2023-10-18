@@ -10,3 +10,7 @@ vim.o.shell="powershell"
 vim.o.shellcmdflag="-command"
 vim.o.shellquote="\\"
 vim.o.shellxquote=""
+
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtab = 4

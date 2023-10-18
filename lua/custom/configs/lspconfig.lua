@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls",  "csharp_ls", "sqlls"}
+local servers = { "html", "cssls", "tsserver", "clangd", "gopls",  "csharp_ls"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,6 +13,31 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- lspconfig.sqls.setup{
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         sqls = {
+--             connections = {
+--                 {
+--                     driver = 'mssql',
+--                     proto = 'tcp',
+--                     user = 'sa',
+--                     password = 'redsox',
+--                     host = 'localhost\\mssqlserver01',
+--                     dbName = 'tc',
+--                 }
+--             }
+--         }
+--     }
+-- }
+-- lspconfig.sqlls.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     root_dir = function ()
+--         return vim.loop.cwd()
+--     end
+-- }
 -- lspconfig.omnisharp.setup {
 --   cmd = { "C:\\Users\\rcurran\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\omnisharp.cmd" },
 --   enable_editorconfig_support = true,
