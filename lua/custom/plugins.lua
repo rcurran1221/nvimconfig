@@ -54,6 +54,10 @@ local plugins = {
     },
     lazy = false
   },
+    {
+        "folke/zen-mode.nvim",
+        lazy = false,
+    }
 
   -- To make a plugin not be loaded
   -- {

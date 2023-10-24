@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls",  "csharp_ls"}
+local servers = { "html", "cssls", "tsserver", "clangd", "gopls"   ,"csharp_ls"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -38,6 +38,11 @@ end
 --         return vim.loop.cwd()
 --     end
 -- }
+lspconfig.csharp_ls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    organize_imports_on_format = true,
+}
 -- lspconfig.omnisharp.setup {
 --   cmd = { "C:\\Users\\rcurran\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\omnisharp.cmd" },
 --   enable_editorconfig_support = true,
@@ -69,5 +74,5 @@ end
 --   on_attach = on_attach,
 --   capabilities = capabilities,
 -- }
--- --
--- -- lspconfig.pyright.setup { blabla}
+--
+-- lspconfig.pyright.setup { blabla}
