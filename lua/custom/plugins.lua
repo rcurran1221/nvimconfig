@@ -52,12 +52,21 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    lazy = false
+    lazy = false,
   },
-    {
-        "folke/zen-mode.nvim",
-        lazy = false,
-    }
+  {
+    "folke/zen-mode.nvim",
+    lazy = false,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+  },
+  {
+    "voldikss/vim-floaterm",
+    lazy = false,
+  },
 
   -- To make a plugin not be loaded
   -- {
