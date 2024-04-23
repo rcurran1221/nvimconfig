@@ -12,7 +12,6 @@ local sources = {
   b.formatting.stylua,
 
   -- cpp
-  -- b.formatting.clang_format,
   b.formatting.csharpier,
   b.formatting.sqlfluff.with {
     extra_args = { "--dialect", "t-sql" }, -- change to your dialect

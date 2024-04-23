@@ -13,16 +13,28 @@ M.general = {
       end,
       "go to references telescope",
     },
-    ["<leader>xx"] = {
+	["gi"] = {
+		function()
+			require("telescope.builtin").lsp_implementations()
+		end,
+		"go to implementation telescope"
+	},
+    ["<leader>td"] = {
       function()
         require("telescope.builtin").diagnostics()
       end,
       "telescope diagnostics",
     },
-    ["<leader>tt"] = {
-      "<cmd> FloatermToggle <CR>",
-      "Toggle Floaterm",
+    ["<leader>ls"] = {
+      function()
+        require("telescope.builtin").lsp_document_symbols()
+      end,
+      "telescope document symbols",
     },
+	["<leader>zm"] = {
+			"<cmd> ZenMode <CR>",
+			"Toggle ZenMode",
+		}
   },
   v = {
     [">"] = { ">gv", "indent" },
