@@ -7,15 +7,15 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
+    -- dependencies = {
+    --   -- format & linting
+    --   {
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     config = function()
+    --       require "custom.configs.null-ls"
+    --     end,
+    --   },
+    -- },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -54,19 +54,21 @@ local plugins = {
     },
     lazy = false,
   },
-  {
-    "folke/zen-mode.nvim",
-    lazy = false,
-  },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = false,
-  },
-  {
-    "voldikss/vim-floaterm",
-    lazy = false,
-  },
+  -- {
+  --   "voldikss/vim-floaterm",
+  --   lazy = false,
+  -- },
+	{
+		"hoffs/omnisharp-extended-lsp.nvim",
+		lazy = false,
+	},
+	{
+		"decodetalkers/csharpls-extended-lsp.nvim"
+	}, 
+	{
+		"hinell/lsp-timeout.nvim",
+		dependencies={ "neovim/nvim-lspconfig" }
+	}
 
   -- To make a plugin not be loaded
   -- {

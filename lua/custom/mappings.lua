@@ -1,4 +1,3 @@
----@type MappingsTable
 local M = {}
 
 M.general = {
@@ -19,7 +18,7 @@ M.general = {
 		end,
 		"go to implementation telescope"
 	},
-    ["<leader>td"] = {
+    ["<leader>ld"] = {
       function()
         require("telescope.builtin").diagnostics()
       end,
@@ -31,9 +30,9 @@ M.general = {
       end,
       "telescope document symbols",
     },
-	["<leader>zm"] = {
-			"<cmd> ZenMode <CR>",
-			"Toggle ZenMode",
+		["<leader>cp"] = {
+			":let @+=expand('%:p') <CR>",
+			"copy file path"
 		}
   },
   v = {

@@ -17,3 +17,16 @@ vim.o.expandtab = false
 
 vim.o.smartindent = true
 vim.o.smarttab = true
+
+
+local timer = vim.loop.new_timer()
+timer:start(5000, 5000, vim.schedule_wrap(function()
+		local clients = vim.lsp.get_active_clients()
+		for _, client in ipairs(clients) do
+			local buffers = client.attached_buffers	
+			print(client.id)
+			if next(buffers) == nil then
+				vim.lsp.stop_client(client.id)
+			end
+	end
+end))
