@@ -18,15 +18,23 @@ vim.o.expandtab = false
 vim.o.smartindent = true
 vim.o.smarttab = true
 
+if vim.g.neovide == true then
+    vim.o.guifont='Hack Nerd Font:h11'
+    vim.api.nvim_set_keymap('n', '<F11>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+	vim.g.neovide_refresh_rate = 200
+end
 
-local timer = vim.loop.new_timer()
-timer:start(5000, 5000, vim.schedule_wrap(function()
-		local clients = vim.lsp.get_active_clients()
-		for _, client in ipairs(clients) do
-			local buffers = client.attached_buffers	
-			print(client.id)
-			if next(buffers) == nil then
-				vim.lsp.stop_client(client.id)
-			end
-	end
-end))
+-- local timer = vim.loop.new_timer()
+-- timer:start(5000, 5000, vim.schedule_wrap(function()
+-- 		local clients = vim.lsp.get_active_clients()
+-- 		for _, client in ipairs(clients) do
+-- 			local buffers = client.attached_buffers	
+-- 		-- 	for key, value in pairs(buffers) do
+-- 		-- 	print("clientid: " .. client.id .. " buffer id: " .. key .. " is attached: " .. tostring(value))
+-- 		-- end
+-- 			if next(buffers) == nil then
+-- 				-- print("clientid: " .. client.id .. " is not attached any buffers")
+-- 				vim.lsp.stop_client(client.id)
+-- 			end
+-- 	end
+-- end))

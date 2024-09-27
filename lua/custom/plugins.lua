@@ -7,15 +7,15 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    -- dependencies = {
-    --   -- format & linting
-    --   {
-    --     "jose-elias-alvarez/null-ls.nvim",
-    --     config = function()
-    --       require "custom.configs.null-ls"
-    --     end,
-    --   },
-    -- },
+    dependencies = {
+      -- format & linting
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require "custom.configs.null-ls"
+        end,
+      },
+    },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -37,6 +37,10 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = overrides.telescope,
+  },
 
   -- Install a plugin
   {
@@ -54,22 +58,18 @@ local plugins = {
     },
     lazy = false,
   },
-  -- {
-  --   "voldikss/vim-floaterm",
-  --   lazy = false,
-  -- },
+  {
+    "decodetalkers/csharpls-extended-lsp.nvim",
+  },
 	{
-		"hoffs/omnisharp-extended-lsp.nvim",
+		"folke/zen-mode.nvim",
 		lazy = false,
-	},
-	{
-		"decodetalkers/csharpls-extended-lsp.nvim"
-	}, 
-	{
-		"hinell/lsp-timeout.nvim",
-		dependencies={ "neovim/nvim-lspconfig" }
-	}
-
+		opts = {
+			window = {
+				width = 0.80,
+			}
+		}
+	}	
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

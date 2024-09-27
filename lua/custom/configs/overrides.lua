@@ -48,7 +48,7 @@ M.mason = {
 M.nvimtree = {
   git = {
     enable = true,
-	ignore = false,
+    ignore = false,
   },
   renderer = {
     highlight_git = true,
@@ -59,5 +59,30 @@ M.nvimtree = {
     },
   },
 }
+
+M.treesitter = {
+  defaults = {
+    preview = {
+      treesitter = false,
+    },
+  },
+}
+
+M.nvterm = {
+  terminals = {
+    type_opts = {
+      vertical = {
+        location = "leftbelow",
+      },
+    },
+  },
+}
+
+-- M.ui = {
+-- 	tabufline =  {
+-- 		enable = false,
+-- 	}
+-- }
+--
 
 return M

@@ -12,12 +12,18 @@ M.general = {
       end,
       "go to references telescope",
     },
-	["gi"] = {
-		function()
-			require("telescope.builtin").lsp_implementations()
-		end,
-		"go to implementation telescope"
-	},
+    ["gi"] = {
+      function()
+        require("telescope.builtin").lsp_implementations()
+      end,
+      "go to implementation telescope",
+    },
+    ["gd"] = {
+      function()
+        require("telescope.builtin").lsp_definitions()
+      end,
+      "go to definition telescope",
+    },
     ["<leader>ld"] = {
       function()
         require("telescope.builtin").diagnostics()
@@ -30,10 +36,18 @@ M.general = {
       end,
       "telescope document symbols",
     },
-		["<leader>cp"] = {
-			":let @+=expand('%:p') <CR>",
-			"copy file path"
-		}
+    ["<leader>cp"] = {
+      ":let @+=expand('%:p:h') <CR>",
+      "copy file path",
+    },
+    ["<leader>zm"] = {
+      ":ZenMode <CR>",
+      "toggle zen mode",
+    },
+    -- ["<leader>e"] = {
+    -- 		":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+    -- 		"open file explorer"
+    -- 	}
   },
   v = {
     [">"] = { ">gv", "indent" },

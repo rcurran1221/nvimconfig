@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls"}
+local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "pyright" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -14,18 +14,22 @@ for _, lsp in ipairs(servers) do
 end
 
 -- lspconfig.sqls.setup{
---     on_attach = on_attach,
+--     on_attach = function(client, bufnr)
+--             require('sqls').on_attach(client, bufnr)
+--         end
+-- 	,
 --     capabilities = capabilities,
 --     settings = {
 --         sqls = {
 --             connections = {
 --                 {
+-- 					alias = 'local sql',
 --                     driver = 'mssql',
---                     proto = 'tcp',
---                     user = 'sa',
---                     password = 'redsox',
---                     host = 'localhost\\mssqlserver01',
---                     dbName = 'tc',
+-- 					dataSourceName = 'Data Source=localhost\\mssqlserver01;InitialCatalogue=TC;User=sa;Password=redsox'
+--                     -- user = 'sa',
+--                     -- password = 'redsox',
+--                     -- host = 'localhost\\mssqlserver01',
+--                     -- dbName = 'TC',
 --                 }
 --             }
 --         }
@@ -38,15 +42,25 @@ end
 --         return vim.loop.cwd()
 --     end
 -- }
-lspconfig.csharp_ls.setup {
+-- require("roslyn").setup({
+--     on_attach = on_attach,
+--     capabilities = capabilities
+-- })
+lspconfig.csharp_ls.setup ({
   on_attach = on_attach,
   capabilities = capabilities,
   organize_imports_on_format = true,
-	-- handlers  = {
-	-- 	["textDocument/definition"] = require('csharpls_extended').handler,
-	-- 	["textDocument/typeDefinition"] = require('csharpls_extended').handler,
-	-- }
-}
+	handlers  = {
+		["textDocument/definition"] = require('csharpls_extended').handler,
+		["textDocument/typeDefinition"] = require('csharpls_extended').handler,
+	},
+    root_dir = function(startpath)
+		-- print(startpath)
+        return lspconfig.util.root_pattern("*.sln")(startpath)
+            or lspconfig.util.root_pattern("*.csproj")(startpath)
+    end,
+	cmd 
+})
 -- lspconfig.omnisharp.setup {
 --   cmd = { "C:\\Users\\rcurran\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\omnisharp.exe" },
 --   enable_editorconfig_support = true,
@@ -80,6 +94,14 @@ lspconfig.csharp_ls.setup {
 --   handlers = {
 --     ["textDocument/definition"] = require("omnisharp_extended").handler,
 --   },
+--   root_dir = function(startpath)
+--     print(startpath)
+--     local primary = lspconfig.util.root_pattern "*.sln"(startpath)
+-- 	print(primary)
+-- 	local secondary = lspconfig.util.root_pattern "*.csproj"(startpath)
+-- 	print(secondary)
+-- 	return primary or secondary
+--   end,
 -- }
---
+
 -- lspconfig.pyright.setup { blabla}

@@ -13,9 +13,9 @@ local sources = {
 
   -- cpp
   b.formatting.csharpier,
-  b.formatting.sqlfluff.with {
-    extra_args = { "--dialect", "t-sql" }, -- change to your dialect
-  },
+  -- b.formatting.sqlfluff.with {
+  --   extra_args = { "--dialect", "t-sql" }, -- change to your dialect
+  -- },
   b.formatting.gofmt,
   b.formatting.golines,
 }
